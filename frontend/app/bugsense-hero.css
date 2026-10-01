@@ -1,0 +1,803 @@
+@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap');
+
+/* ==========================================================================
+   BugSense Minimal Design System - Custom CSS
+   Clean, Black-and-White, Tight Negative Letter-Spacing Throughout
+   ========================================================================== */
+
+:root {
+  --bg: #ffffff;
+  --text: #0a0a0a;
+  --muted: #6b6b6b;
+  --button-bg: #0a0a0a;
+  --button-text: #ffffff;
+  --border-soft: rgba(0, 0, 0, 0.08);
+  --green: #17c964;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: 'Source Serif 4', Georgia, serif;
+}
+
+/* Animations */
+@keyframes marquee-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes line-pulse {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  15% {
+    opacity: 0.9;
+  }
+  70% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+}
+
+@keyframes line-pulse-h {
+  0% {
+    opacity: 0;
+    transform: scaleY(1);
+  }
+  15% {
+    opacity: 0.9;
+  }
+  70% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0;
+    transform: scaleY(0.85);
+  }
+}
+
+/* Page Root Wrapper */
+.bugsense-wrapper {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  letter-spacing: -0.04em;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================================================
+   1. Navbar Component
+   ========================================================================== */
+.bugsense-navbar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.bugsense-navbar {
+  width: 100%;
+  max-width: 1200px;
+  padding: 19px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  pointer-events: auto;
+}
+
+.bugsense-logo {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 2px;
+  text-decoration: none;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.bugsense-logo-text {
+  font-family: var(--font-serif);
+  font-size: 30px;
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: -0.08em;
+  color: var(--text);
+  line-height: 1;
+}
+
+.bugsense-logo-reg {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0;
+  vertical-align: super;
+  color: var(--text);
+  margin-left: 2px;
+}
+
+.bugsense-menu-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: 9999px;
+  padding: 10px 20px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.bugsense-menu-btn:hover {
+  transform: translateY(-1px);
+  opacity: 0.92;
+}
+
+.bugsense-menu-icon {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease;
+}
+
+.bugsense-menu-icon.open {
+  transform: rotate(180deg);
+}
+
+/* Fullscreen Navigation Drawer */
+.bugsense-drawer {
+  position: fixed;
+  inset: 0;
+  background-color: #ffffff;
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 120px 36px 48px;
+  box-sizing: border-box;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
+}
+
+.bugsense-drawer.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.bugsense-drawer-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin: auto 0;
+}
+
+.bugsense-drawer-link {
+  font-family: var(--font-sans);
+  font-size: 48px;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  color: var(--text);
+  text-decoration: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.bugsense-drawer-link:hover {
+  opacity: 0.45;
+  transform: translateX(4px);
+}
+
+.bugsense-drawer-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--muted);
+  border-top: 1px solid var(--border-soft);
+  padding-top: 24px;
+}
+
+/* ==========================================================================
+   2. Hero Section
+   ========================================================================== */
+.bugsense-hero {
+  position: relative;
+  min-height: 850px;
+  padding: 160px 36px 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Background image via ::before pseudo-element */
+.bugsense-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260626_041422_4a459e05-abce-4150-9fb7-4ededc423cd1.png&w=1280&q=85');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.72;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Hero Content Stack */
+.bugsense-hero-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Decorative Curved Lines (Left & Right) */
+.bugsense-lines-left,
+.bugsense-lines-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 320px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.bugsense-lines-left {
+  left: 0;
+}
+
+.bugsense-lines-right {
+  right: 0;
+}
+
+.bugsense-curved-line {
+  position: absolute;
+  top: 15%;
+  height: 70%;
+  border: 2.5px solid #FCFAF8;
+  box-sizing: border-box;
+  animation: line-pulse 5s ease-in-out infinite;
+  opacity: 0;
+}
+
+/* Left side: no left border, radius on right */
+.bugsense-curved-line.left {
+  left: 0;
+  border-left: none;
+  border-top-right-radius: 80px;
+  border-bottom-right-radius: 80px;
+}
+
+/* Right side: no right border, radius on left */
+.bugsense-curved-line.right {
+  right: 0;
+  border-right: none;
+  border-top-left-radius: 80px;
+  border-bottom-left-radius: 80px;
+}
+
+/* Mobile top horizontal lines */
+.bugsense-lines-top {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 240px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.bugsense-curved-line-h {
+  position: absolute;
+  top: 0;
+  left: 10%;
+  width: 80%;
+  border: 2.5px solid #FCFAF8;
+  border-top: none;
+  border-bottom-left-radius: 80px;
+  border-bottom-right-radius: 80px;
+  box-sizing: border-box;
+  animation: line-pulse-h 5s ease-in-out infinite;
+  opacity: 0;
+}
+
+/* Ticker Marquee Row */
+.bugsense-ticker-wrapper {
+  width: 100%;
+  max-width: 500px;
+  height: 36px;
+  margin-bottom: 28px;
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(90deg, transparent 0%, black 12%, black 88%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 12%, black 88%, transparent 100%);
+}
+
+.bugsense-ticker-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: marquee-left 30s linear infinite;
+  will-change: transform;
+}
+
+.bugsense-ticker-track:hover {
+  animation-play-state: paused;
+}
+
+.bugsense-ticker-item {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  margin-right: 8px;
+  background-color: rgb(251, 251, 251);
+  color: var(--muted);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  border-radius: 9999px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  white-space: nowrap;
+}
+
+/* Hero Title */
+.bugsense-title {
+  max-width: 580px;
+  font-family: var(--font-sans);
+  font-size: 82px;
+  font-weight: 600;
+  line-height: 1.03;
+  letter-spacing: -0.07em;
+  color: var(--text);
+  margin: 0 0 24px 0;
+  text-align: center;
+}
+
+.bugsense-title-serif {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: -0.08em;
+}
+
+.bugsense-title-reg {
+  font-family: var(--font-sans);
+  font-size: 24px;
+  font-weight: 600;
+  vertical-align: super;
+  letter-spacing: 0;
+  margin-left: 2px;
+}
+
+/* Hero Subtitle */
+.bugsense-subtitle {
+  max-width: 476px;
+  font-family: var(--font-sans);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.45;
+  letter-spacing: -0.03em;
+  color: var(--muted);
+  margin: 0 0 40px 0;
+  text-align: center;
+}
+
+/* CTA Buttons Row */
+.bugsense-cta-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.bugsense-btn-primary {
+  height: 56px;
+  padding: 18px 30px;
+  border-radius: 9999px;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.bugsense-btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  background-color: #1a1a1a;
+}
+
+.bugsense-btn-book {
+  height: 56px;
+  background-color: #ffffff;
+  border: 4px solid rgb(248, 248, 248);
+  border-radius: 9999px;
+  padding: 8px 24px 8px 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.bugsense-btn-book:hover {
+  transform: translateY(-1px);
+  border-color: rgb(240, 240, 240);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.bugsense-book-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.bugsense-book-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.bugsense-book-primary {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: #000000;
+  line-height: 1.2;
+}
+
+.bugsense-book-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: rgb(152, 152, 152);
+  line-height: 1.2;
+}
+
+.bugsense-green-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background-color: rgb(29, 204, 93);
+  display: inline-block;
+  animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+/* Progressive Blur at bottom of hero */
+.bugsense-progressive-blur {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 178px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 40%,
+    rgba(255, 255, 255, 0.85) 75%,
+    #ffffff 100%
+  );
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* ==========================================================================
+   3. TrustedBy Section
+   ========================================================================== */
+.bugsense-trusted-section {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 36px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+  border-top: 1px solid var(--border-soft);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.bugsense-trusted-label {
+  max-width: 163px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: -0.03em;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+.bugsense-trusted-marquee-wrapper {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(90deg, transparent 0%, black 12%, black 88%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 12%, black 88%, transparent 100%);
+}
+
+.bugsense-trusted-track {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  width: max-content;
+  animation: marquee-left 30s linear infinite;
+  will-change: transform;
+}
+
+.bugsense-trusted-track:hover {
+  animation-play-state: paused;
+}
+
+.bugsense-trusted-item {
+  font-size: 16px;
+  font-weight: 600;
+  color: #000000;
+  white-space: nowrap;
+  letter-spacing: -0.03em;
+  display: inline-block;
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+}
+
+.bugsense-trusted-item:hover {
+  opacity: 1;
+}
+
+/* Distinct Typography for Brands */
+.brand-airbnb {
+  font-family: 'Cedarville Cursive', cursive, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+}
+.brand-shopify {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+}
+.brand-notion {
+  font-family: Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+.brand-linear {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.06em;
+}
+.brand-webflow {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+}
+.brand-figma {
+  font-family: system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
+.brand-slack {
+  font-family: Georgia, serif;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+.brand-stripe {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.06em;
+}
+.brand-vercel {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.05em;
+}
+.brand-framer {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: -0.06em;
+}
+
+/* ==========================================================================
+   4. Showcase Extension (BugSense 3D Platform Suite)
+   ========================================================================== */
+.bugsense-showcase-section {
+  position: relative;
+  z-index: 10;
+  max-width: 1200px;
+  margin: 64px auto 96px;
+  padding: 0 36px;
+  box-sizing: border-box;
+}
+
+.bugsense-section-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.bugsense-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  background-color: #f5f5f5;
+  border: 1px solid var(--border-soft);
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+.bugsense-section-title {
+  font-family: var(--font-sans);
+  font-size: 38px;
+  font-weight: 600;
+  letter-spacing: -0.06em;
+  color: var(--text);
+  margin: 0 0 12px;
+}
+
+.bugsense-section-desc {
+  font-size: 16px;
+  color: var(--muted);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   5. Responsive Breakpoints
+   ========================================================================== */
+
+/* < 1200px */
+@media (max-width: 1200px) {
+  .bugsense-hero {
+    padding: 140px 32px 100px;
+  }
+
+  .bugsense-title {
+    font-size: clamp(60px, 8vw, 72px);
+  }
+
+  .bugsense-navbar {
+    padding: 19px 32px;
+  }
+
+  .bugsense-drawer-link {
+    font-size: 40px;
+  }
+}
+
+/* < 810px */
+@media (max-width: 810px) {
+  .bugsense-hero {
+    min-height: 760px;
+    padding: 120px 24px 96px;
+  }
+
+  /* Background image rotated 90deg to fill portrait viewport */
+  .bugsense-hero::before {
+    transform: rotate(90deg) scale(1.4);
+    background-size: cover;
+  }
+
+  /* Side curved lines hidden */
+  .bugsense-lines-left,
+  .bugsense-lines-right {
+    display: none;
+  }
+
+  /* Top horizontal lines shown */
+  .bugsense-lines-top {
+    display: block;
+  }
+
+  .bugsense-title {
+    font-size: clamp(44px, 13vw, 52px);
+    line-height: 1.05;
+  }
+
+  .bugsense-title-reg {
+    font-size: 18px;
+  }
+
+  .bugsense-subtitle {
+    font-size: 15px;
+    margin-bottom: 32px;
+  }
+
+  /* CTA buttons stack vertically full-width (max 320px) */
+  .bugsense-cta-row {
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
+
+  .bugsense-btn-primary,
+  .bugsense-btn-book {
+    width: 100%;
+    max-width: 320px;
+    justify-content: center;
+  }
+
+  /* Trusted section stacks vertically */
+  .bugsense-trusted-section {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 28px 24px;
+    gap: 24px;
+  }
+
+  .bugsense-trusted-label {
+    max-width: 100%;
+  }
+
+  .bugsense-drawer-link {
+    font-size: 32px;
+  }
+
+  .bugsense-navbar {
+    padding: 16px 20px;
+  }
+}
