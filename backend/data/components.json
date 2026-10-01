@@ -1,0 +1,65 @@
+[
+  {
+    "id": "11111111-1111-1111-1111-111111111101",
+    "name": "Authentication & Identity",
+    "description": "User login, registration, OAuth SSO, JWT token issuance, session refresh, and multi-factor authentication.",
+    "owner_team": "Identity & Security Team",
+    "owner_developer_email": "dev.auth@bugtriage.ai"
+  },
+  {
+    "id": "11111111-1111-1111-1111-111111111102",
+    "name": "Billing & Payments",
+    "description": "Stripe/PayPal integration, checkout flows, invoice generation, subscription upgrades, and credit card processing.",
+    "owner_team": "Monetization & Core Commerce",
+    "owner_developer_email": "dev.billing@bugtriage.ai"
+  },
+  {
+    "id": "11111111-1111-1111-1111-111111111103",
+    "name": "Dashboard & UI Layout",
+    "description": "Main navigation sidebar, dashboard widgets, responsive grid rendering, dark mode theming, and layout state.",
+    "owner_team": "Frontend Platform Team",
+    "owner_developer_email": "dev.frontend@bugtriage.ai"
+  },
+  {
+    "id": "11111111-1111-1111-1111-111111111104",
+    "name": "Notifications & Alerts",
+    "description": "Real-time WebSockets, push notifications, email transactional delivery via SendGrid, and SMS alerts.",
+    "owner_team": "Communications Infrastructure",
+    "owner_developer_email": "dev.notify@bugtriage.ai"
+  },
+  {
+    "id": "11111111-1111-1111-1111-111111111105",
+    "name": "API Gateway & Routing",
+    "description": "Reverse proxy, rate limiting, request validation, CORS handling, load balancing, and API authorization middleware.",
+    "owner_team": "Infrastructure & Core Services",
+    "owner_developer_email": "dev.infra@bugtriage.ai"
+  },
+  {
+    "id": "11111111-1111-1111-1111-111111111106",
+    "name": "Search & Indexing Engine",
+    "description": "Full-text search, Elasticsearch queries, vector similarity indexing, filters, and autocomplete search bar.",
+    "owner_team": "Search & Data Systems",
+    "owner_developer_email": "dev.search@bugtriage.ai"
+  },
+  {
+    "id": "11111111-1111-1111-1111-111111111107",
+    "name": "User Settings & Profile",
+    "description": "Avatar uploads, password reset requests, localization preferences, team member invitations, and profile metadata.",
+    "owner_team": "User Experience Team",
+    "owner_developer_email": "dev.profile@bugtriage.ai"
+  },
+  {
+    "id": "11111111-1111-1111-1111-111111111108",
+    "name": "Reporting & Analytics",
+    "description": "CSV and PDF exports, aggregation pipelines, analytics charts, metrics calculation, and audit trail logs.",
+    "owner_team": "Analytics & Intelligence",
+    "owner_developer_email": "dev.analytics@bugtriage.ai"
+  },
+  {
+    "id": "11111111-1111-1111-1111-111111111109",
+    "name": "Third-Party Integrations",
+    "description": "Webhooks, Slack bots, GitHub sync, Jira webhook dispatch, and external CRM connectors.",
+    "owner_team": "Ecosystem Integrations",
+    "owner_developer_email": "dev.integrations@bugtriage.ai"
+  }
+]

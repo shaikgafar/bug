@@ -1,0 +1,134 @@
+[
+  {
+    "id": "22222222-2222-2222-2222-222222222201",
+    "title": "Login broken",
+    "raw_description": "I tried to log in today and it didn't work. The button just spins and nothing happens. Please fix ASAP.",
+    "category": "incomplete",
+    "expected_duplicate_of": null,
+    "status": "submitted",
+    "severity": "high",
+    "priority": "P1",
+    "component_name": "Authentication & Identity"
+  },
+  {
+    "id": "22222222-2222-2222-2222-222222222202",
+    "title": "OAuth Google Sign-In hangs with infinite spinner on Chrome v128",
+    "raw_description": "When clicking 'Sign in with Google' on the /login page using Chrome 128 on macOS Sonoma, the OAuth popup closes successfully after consent, but the main dashboard never loads. The button maintains an active spinner state indefinitely and browser console shows: 'Uncaught (in promise) Error: Cross-origin redirect refused'.",
+    "category": "duplicate_target",
+    "expected_duplicate_of": null,
+    "status": "triaging",
+    "severity": "high",
+    "priority": "P1",
+    "component_name": "Authentication & Identity"
+  },
+  {
+    "id": "22222222-2222-2222-2222-222222222203",
+    "title": "Google SSO login button remains in infinite loading state after auth popup",
+    "raw_description": "Signing in through Google SSO triggers popup. Once authenticated, popup closes but authentication token is never written to session storage. Main login screen stays disabled with loading spinner forever.",
+    "category": "duplicate",
+    "expected_duplicate_of": "22222222-2222-2222-2222-222222222202",
+    "status": "submitted",
+    "severity": "high",
+    "priority": "P1",
+    "component_name": "Authentication & Identity"
+  },
+  {
+    "id": "22222222-2222-2222-2222-222222222204",
+    "title": "Regression: Checkout flow throws 500 Internal Server Error when selecting Stripe credit card",
+    "raw_description": "After release v2.4.1 deployed this morning, clicking 'Pay with Credit Card' on the checkout page immediately triggers a 500 error from POST /api/v1/checkout/process. In v2.4.0 this was functioning normally. Server log indicates KeyError: 'currency_code' in payment intent builder.",
+    "category": "regression",
+    "expected_duplicate_of": null,
+    "status": "triaging",
+    "severity": "critical",
+    "priority": "P0",
+    "component_name": "Billing & Payments"
+  },
+  {
+    "id": "22222222-2222-2222-2222-222222222205",
+    "title": "High-Quality: User profile avatar upload fails for PNG images over 2MB with silent drop",
+    "raw_description": "Summary:\nUploading a 2.5MB PNG file as user profile photo fails silently without any error banner displayed to the user.\n\nSteps to reproduce:\n1. Log in as any standard user.\n2. Navigate to /settings/profile.\n3. Click 'Upload Photo' and select sample_avatar_3mb.png.\n4. Click 'Save Profile Changes'.\n\nExpected Result:\nEither upload succeeds and displays avatar preview, or a clear validation message shows: 'File size must be under 2MB'.\n\nActual Result:\nThe form resets to original state, no network request is logged in the DevTools console, and no feedback is shown.\n\nEnvironment:\nFirefox 129.0 on Ubuntu 24.04 LTS, Backend commit 4f981ae.",
+    "category": "complete",
+    "expected_duplicate_of": null,
+    "status": "reproduced",
+    "severity": "medium",
+    "priority": "P2",
+    "component_name": "User Settings & Profile"
+  },
+  {
+    "id": "22222222-2222-2222-2222-222222222206",
+    "title": "Payment invoice notification emails trigger duplicate SMS alerts via webhook loop",
+    "raw_description": "When a subscription invoice is settled in Billing & Payments, the event dispatches both an email notification and a webhook to Third-Party Integrations. The webhook handler inadvertently triggers the SMS notification worker twice for the same transaction ID, resulting in customers receiving 2 identical text messages.",
+    "category": "multi_component",
+    "expected_duplicate_of": null,
+    "status": "submitted",
+    "severity": "high",
+    "priority": "P1",
+    "component_name": "Notifications & Alerts"
+  },
+  {
+    "id": "22222222-2222-2222-2222-222222222207",
+    "title": "Safari iOS 17.5: Dashboard widgets overflow horizontally breaking mobile responsive viewport",
+    "raw_description": "On iPhone 15 Pro running Mobile Safari 17.5, the metrics summary widgets on /dashboard fail CSS flex-wrap. The horizontal scrollbar appears and cuts off the rightmost action buttons. Works fine on Android Chrome and desktop browsers.",
+    "category": "environment_specific",
+    "expected_duplicate_of": null,
+    "status": "submitted",
+    "severity": "medium",
+    "priority": "P2",
+    "component_name": "Dashboard & UI Layout"
+  },
+  {
+    "id": "22222222-2222-2222-2222-222222222208",
+    "title": "API Gateway returns HTTP 429 Too Many Requests prematurely under burst traffic",
+    "raw_description": "The token bucket rate limiter in the API Gateway throttles valid automated integration clients when sending 15 rapid requests within a 2-second window, even though configured burst allowance is 50 req/sec. Redis rate limit counter key expires too slowly.",
+    "category": "variation",
+    "expected_duplicate_of": null,
+    "status": "submitted",
+    "severity": "high",
+    "priority": "P1",
+    "component_name": "API Gateway & Routing"
+  },
+  {
+    "id": "22222222-2222-2222-2222-222222222209",
+    "title": "Search bar autocomplete dropdown does not dismiss on outside click",
+    "raw_description": "Typing a query in the global search bar opens the autocomplete suggestion list. Clicking anywhere on the dashboard background or clicking a sidebar link does not close the dropdown menu, obscuring the primary page navigation until Esc is pressed.",
+    "category": "variation",
+    "expected_duplicate_of": null,
+    "status": "submitted",
+    "severity": "low",
+    "priority": "P3",
+    "component_name": "Search & Indexing Engine"
+  },
+  {
+    "id": "22222222-2222-2222-2222-222222222210",
+    "title": "CSV export of quarterly analytics report outputs empty timestamp column",
+    "raw_description": "Navigating to /analytics/reports and clicking 'Export CSV' generates a valid file, but the 'timestamp_utc' column is completely empty for all 1,200 rows. JSON export works correctly with ISO-8601 strings.",
+    "category": "variation",
+    "expected_duplicate_of": null,
+    "status": "submitted",
+    "severity": "medium",
+    "priority": "P2",
+    "component_name": "Reporting & Analytics"
+  },
+  {
+    "id": "22222222-2222-2222-2222-222222222211",
+    "title": "Slack integration webhook fails with SSL certificate handshake verification error",
+    "raw_description": "Outbound webhook alerts dispatched to corporate Slack incoming webhooks fail on staging cluster. Log trace shows SSLError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1006).",
+    "category": "variation",
+    "expected_duplicate_of": null,
+    "status": "submitted",
+    "severity": "high",
+    "priority": "P1",
+    "component_name": "Third-Party Integrations"
+  },
+  {
+    "id": "22222222-2222-2222-2222-222222222212",
+    "title": "Dark mode theme toggle resets to light mode upon browser page reload",
+    "raw_description": "Selecting Dark Mode in top navigation sets data-theme='dark' in DOM. However, upon pressing F5 or navigating to another page, theme preference stored in localStorage is overwritten by system preference default.",
+    "category": "variation",
+    "expected_duplicate_of": null,
+    "status": "submitted",
+    "severity": "low",
+    "priority": "P3",
+    "component_name": "Dashboard & UI Layout"
+  }
+]
