@@ -155,7 +155,7 @@ Firefox 129.0 on Ubuntu 24.04 LTS, Backend commit 4f981ae.`,
           <span className="flex items-center gap-1.5">
             <span className={`h-2 w-2 rounded-full ${backendOnline ? 'bg-[#17c964] animate-pulse' : backendOnline === false ? 'bg-rose-500' : 'bg-amber-400'}`} />
             <span className="text-[11px] font-mono text-neutral-600">
-              {backendOnline ? 'Backend Online (Port 8000)' : backendOnline === false ? 'Backend Offline' : 'Checking Engine...'}
+              {backendOnline ? 'Backend Connected' : backendOnline === false ? 'Backend Offline' : 'Checking Engine...'}
             </span>
           </span>
         </div>
